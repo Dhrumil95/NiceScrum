@@ -70,7 +70,6 @@
     <Content Include="App_Data\NiceScrumDB_log.ldf">
       <DependentUpon>NiceScrumDB.mdf</DependentUpon>
     </Content>
-    <Content Include="message.aspx" />
     <Content Include="Models\invalidCred.aspx" />
     <Content Include="Models\homepage.aspx" />
     <Content Include="packages.config" />
@@ -90,13 +89,6 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="message.aspx.cs">
-      <DependentUpon>message.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="message.aspx.designer.cs">
-      <DependentUpon>message.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\invalidCred.aspx.cs">
       <DependentUpon>invalidCred.aspx</DependentUpon>

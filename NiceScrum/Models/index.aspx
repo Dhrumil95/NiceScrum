@@ -85,7 +85,7 @@
          <asp:TextBox ID="TextBox1" runat="server" Height="18px"  Width="313px" placeholder="USERNAME" ></asp:TextBox>
         </p>
         <p  class ="p">
-            <asp:TextBox ID="TextBox2" runat="server" Height="18px" Width="312px" placeholder ="PASSWORD"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" type="password" runat="server" Height="18px" Width="312px" placeholder ="PASSWORD"></asp:TextBox>
         </p>
         <p  style="font-size:25px">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" Width="121px"   />
