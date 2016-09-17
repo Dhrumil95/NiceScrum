@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <h1> Welcome, <%= Session["test"].ToString() %>  </h1>
+        <h1> Welcome, <%= Session["Name"].ToString() %>  </h1>
     </div>
     </form>
 </body>

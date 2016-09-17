@@ -14,16 +14,14 @@ namespace NiceScrum
         protected void Page_Load(object sender, EventArgs e)
         {
             Button1.Text = "Submit";
+            Button2.Text = "Register";
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            string filename, version, connectioninfo;
+            string connectioninfo;
             SqlConnection db;
-
-            version = "MSSQLLocalDB";
-            filename = "NiceScrumDB.mdf";
-
+            
             connectioninfo = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
 
             db = new SqlConnection(connectioninfo);
@@ -41,20 +39,24 @@ namespace NiceScrum
             object result = new object();
             result = cmd.ExecuteScalar();
          
-
             db.Close();
             string userName = "";
-            if (result == null) Console.Write("Item was not found"); // debug
+            if (result == null) Response.Redirect("invalidCred.aspx");
             else if (result == DBNull.Value)
-                Console.Write("Item found but value was NULL"); // debug
+                Response.Redirect("invalidCred.aspx");
             else
             {
                 userName = Convert.ToString(result);
             }
 
-            Session.Add("test", userName);
+            Session.Add("Name", userName);
             
             Response.Redirect("homepage.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("register.aspx");
         }
     }
 }

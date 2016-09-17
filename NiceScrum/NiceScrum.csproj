@@ -70,6 +70,8 @@
     <Content Include="App_Data\NiceScrumDB_log.ldf">
       <DependentUpon>NiceScrumDB.mdf</DependentUpon>
     </Content>
+    <Content Include="message.aspx" />
+    <Content Include="Models\invalidCred.aspx" />
     <Content Include="Models\homepage.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -81,12 +83,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\register.aspx" />
     <Content Include="Web.config" />
     <Content Include="Models\index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="message.aspx.cs">
+      <DependentUpon>message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="message.aspx.designer.cs">
+      <DependentUpon>message.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\invalidCred.aspx.cs">
+      <DependentUpon>invalidCred.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\invalidCred.aspx.designer.cs">
+      <DependentUpon>invalidCred.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
@@ -102,6 +119,13 @@
     </Compile>
     <Compile Include="Models\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
