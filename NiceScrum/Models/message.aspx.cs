@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Data;
 
 namespace NiceScrum
@@ -40,7 +35,33 @@ namespace NiceScrum
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-           
+         
+
+            if (Convert.ToBoolean(DropDownList1.SelectedIndex != 0))
+            {
+                String From = Session["Name"].ToString();
+                String To = DropDownList1.SelectedItem.Text;
+                String Subject = TextBox1.Text.Replace("'", "''");
+                String Message = TextBox2.Text.Replace("'", "''");
+
+                string constr = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
+
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    //   INSERT INTO mess("FROM", "TO", "SUBJECT", "MESSAGE") values('HarveyB', 'Hello', 'This is a Subject', 'This is a message');
+                    String sql = String.Format("INSERT INTO mess(\"FROM\", \"TO\", \"SUBJECT\", \"MESSAGE\") values('{0}', '{1}', '{2}', '{3}')", From, To, Subject, Message);
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                TextBox1.Text = TextBox2.Text = "";
+                DropDownList1.SelectedIndex = 0;
+            }
         }
     }
 }

@@ -75,14 +75,16 @@ li a:hover {
     <form id="form1" runat="server">
     <ul id="menulist1">
        <li> <a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
-       <li><a href="#" class ="active" onclick="showPanel('Panel1')">Compose</a></li>
-        <li> <a href="#" onclick="hidePanel('Panel1')">Inbox</a> </li>
+       <li><a href="#" class ="active" onclick="showPanel('Panel1'); hidePanel('Panel2')">Compose</a></li>
+        <li> <a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1');">Inbox</a> </li>
         <li> <a href="#" onclick="hidePanel('Panel1')">Sent</a> </li>
     </ul> 
        
         <p>
-            &nbsp;</p>
-        <asp:Panel ID="Panel1" runat="server" Height="546px" style="margin-top: 0px">
+            </p>
+        <asp:Panel ID="Panel2" runat="server" Height="485px" style="display:none"  >
+            This is Panel 2</asp:Panel>
+        <asp:Panel ID="Panel1" runat="server" Height="546px" style="display:none">
             From:&nbsp; <%= Session["Name"].ToString() %> 
             <br />
             <br />
@@ -103,13 +105,5 @@ li a:hover {
         </asp:Panel>
        
     </form>
-    <p>
-        &nbsp;</p>
-    <p>
-        &nbsp;</p>
-    <p>
-        &nbsp;</p>
-    <p>
-        &nbsp;</p>
 </body>
 </html>
