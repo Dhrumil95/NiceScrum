@@ -75,16 +75,38 @@ li a:hover {
     <form id="form1" runat="server">
     <ul id="menulist1">
        <li> <a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
-       <li><a href="#" class ="active" onclick="showPanel('Panel1'); hidePanel('Panel2')">Compose</a></li>
-        <li> <a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1');">Inbox</a> </li>
-        <li> <a href="#" onclick="hidePanel('Panel1')">Sent</a> </li>
+       <li><a href="#" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3')">Compose</a></li>
+        <li> <a href="#" class ="active" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3')">Inbox</a> </li>
+        <li> <a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2')">Sent</a> </li>
     </ul> 
        
         <p>
             </p>
         <p>
             </p>
-        <asp:Panel ID="Panel3" runat="server">
+        <asp:Panel ID="Panel3" runat="server" Height="390px" style="display:none" >
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="NiceScrum" ForeColor="Black" GridLines="Vertical">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField DataField="TO" HeaderText="TO" SortExpression="TO" />
+                    <asp:BoundField DataField="SUBJECT" HeaderText="SUBJECT" SortExpression="SUBJECT" />
+                    <asp:BoundField DataField="MESSAGE" HeaderText="MESSAGE" SortExpression="MESSAGE" />
+                </Columns>
+                <FooterStyle BackColor="#CCCC99" />
+                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                <RowStyle BackColor="#F7F7DE" />
+                <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                <SortedAscendingHeaderStyle BackColor="#848384" />
+                <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                <SortedDescendingHeaderStyle BackColor="#575357" />
+            </asp:GridView>
+            <asp:SqlDataSource ID="NiceScrum" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [TO], [SUBJECT], [MESSAGE] FROM [mess] WHERE ([FROM] = @FROM) ORDER BY [Id] DESC">
+                <SelectParameters>
+                    <asp:SessionParameter Name="FROM" SessionField="Name" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server" Height="412px" Width="845px">
             <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" AutoGenerateColumns="False" DataSourceID="NiceScrumDB" HorizontalAlign="Left" OnRowDataBound="GridView1_RowDataBound" >

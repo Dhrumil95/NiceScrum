@@ -31,6 +31,24 @@ namespace NiceScrum {
         protected global::System.Web.UI.WebControls.Panel Panel3;
         
         /// <summary>
+        /// GridView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
+        
+        /// <summary>
+        /// NiceScrum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource NiceScrum;
+        
+        /// <summary>
         /// Panel2 control.
         /// </summary>
         /// <remarks>

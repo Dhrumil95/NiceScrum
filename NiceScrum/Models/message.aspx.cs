@@ -62,6 +62,8 @@ namespace NiceScrum
                 TextBox1.Text = TextBox2.Text = "";
                 DropDownList1.SelectedIndex = 0;
             }
+            GridView1.DataBind();
+            GridView2.DataBind();
         }
 
         
