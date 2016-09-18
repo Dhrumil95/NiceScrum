@@ -32,7 +32,7 @@ namespace NiceScrum
 
             Console.Write(username);
             Console.WriteLine(password);
-            string sql = String.Format(@"select name, accType, userid from users where username = '{0}' and pass= '{1}'", username, password);
+            string sql = String.Format(@"select name, accType, userid from users where username = '{0}' and pass= '{1}' COLLATE Latin1_General_CS_AS ", username, password);
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = db;
             cmd.CommandText = sql;
