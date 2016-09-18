@@ -82,8 +82,34 @@ li a:hover {
        
         <p>
             </p>
-        <asp:Panel ID="Panel2" runat="server" Height="485px" style="display:none"  >
-            This is Panel 2</asp:Panel>
+        <p>
+            </p>
+        <asp:Panel ID="Panel3" runat="server">
+        </asp:Panel>
+        <asp:Panel ID="Panel2" runat="server" Height="412px" Width="845px">
+            <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" AutoGenerateColumns="False" DataSourceID="NiceScrumDB" HorizontalAlign="Left" OnRowDataBound="GridView1_RowDataBound" >
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField DataField="FROM" HeaderText="FROM" SortExpression="FROM" />
+                    <asp:BoundField DataField="SUBJECT" HeaderText="SUBJECT" SortExpression="SUBJECT" />
+                    <asp:BoundField DataField="MESSAGE" HeaderText="MESSAGE" SortExpression="MESSAGE" />
+                </Columns>
+                <FooterStyle BackColor="#CCCC99" />
+                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" Wrap="True" />
+                <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                <RowStyle BackColor="#F7F7DE" Wrap="True" />
+                <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                <SortedAscendingHeaderStyle BackColor="#848384" />
+                <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                <SortedDescendingHeaderStyle BackColor="#575357" />
+            </asp:GridView>
+            <asp:SqlDataSource ID="NiceScrumDB" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [FROM], [SUBJECT], [MESSAGE] FROM [mess] WHERE ([TO] = @TO) ORDER BY [Id] DESC">
+                <SelectParameters>
+                    <asp:SessionParameter Name="TO" SessionField="Name" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+        </asp:Panel>
         <asp:Panel ID="Panel1" runat="server" Height="546px" style="display:none">
             From:&nbsp; <%= Session["Name"].ToString() %> 
             <br />

@@ -63,5 +63,37 @@ namespace NiceScrum
                 DropDownList1.SelectedIndex = 0;
             }
         }
+
+        
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string myString = e.Row.Cells[2].Text;
+
+                string result = string.Empty;
+
+                for (int i = 0; i < myString.Length; i++)
+                    result += (i % 165 == 0 && i != 0) ? (myString[i].ToString() + "<br/>") : myString[i].ToString();
+
+                e.Row.Cells[2].Text = result;
+            }
+        }
+
+        protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string myString = e.Row.Cells[2].Text;
+
+                string result = string.Empty;
+
+                for (int i = 0; i < myString.Length; i++)
+                    result += (i % 165 == 0 && i != 0) ? (myString[i].ToString() + "<br/>") : myString[i].ToString();
+
+                e.Row.Cells[2].Text = result;
+            }
+        }
     }
 }
