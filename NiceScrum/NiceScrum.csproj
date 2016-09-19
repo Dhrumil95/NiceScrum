@@ -71,7 +71,6 @@
       <DependentUpon>NiceScrumDB.mdf</DependentUpon>
     </Content>
     <Content Include="Models\message.aspx" />
-    <Content Include="Models\invalidCred.aspx" />
     <Content Include="Models\homepage.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -97,13 +96,6 @@
     </Compile>
     <Compile Include="Models\message.aspx.designer.cs">
       <DependentUpon>message.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\invalidCred.aspx.cs">
-      <DependentUpon>invalidCred.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Models\invalidCred.aspx.designer.cs">
-      <DependentUpon>invalidCred.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>

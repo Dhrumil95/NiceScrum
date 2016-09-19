@@ -22,8 +22,8 @@ namespace NiceScrum
             db = new SqlConnection(connectioninfo);
             db.Open();
 
-            string username = TextBox1.Text;
-            string password = TextBox2.Text;
+            string username = TextBox1.Text.Replace("'","''");
+            string password = TextBox2.Text.Replace("'","''");
 
             Console.Write(username);
             Console.WriteLine(password);
@@ -36,9 +36,9 @@ namespace NiceScrum
          
             db.Close();
             string userName = "";
-            if (result == null) Response.Redirect("invalidCred.aspx");
+            if (result == null) Response.Redirect("index.aspx?inval=1");
             else if (result == DBNull.Value)
-                Response.Redirect("invalidCred.aspx");
+                Response.Redirect("index.aspx?inval=1");
             else
             {
                 userName = Convert.ToString(result);
