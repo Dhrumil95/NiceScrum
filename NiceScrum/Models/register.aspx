@@ -7,9 +7,9 @@
     <title>Register</title>
     <style type="text/css">
         @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
-    
-        
-        
+
+
+
         body {
             font-family: 'Source Sans Pro', sans-serif;
             color: white;
@@ -17,49 +17,50 @@
             background: #2c3338;
         }
 
-         h1 {
-        color:antiquewhite;
-        text-align:center;
-        font-size:40px;
-    }
+        h1 {
+            color: antiquewhite;
+            text-align: center;
+            font-size: 40px;
+        }
 
-    p {
-           text-align:center;
-           font-size:25px;
+        p {
+            text-align: center;
+            font-size: 25px;
+        }
 
-    }
-      ::-webkit-input-placeholder
-        {
+        ::-webkit-input-placeholder {
             text-align: center;
         }
 
-       #Button1 {
-        background-color: rgb(255, 0, 220);
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        border-radius: 12px;
-}   
+        #Button1 {
+            background-color: rgb(255, 0, 220);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 12px;
+        }
 
-   #Button1:hover {background-color: rgba(255, 0, 220, 0.94)}
+            #Button1:hover {
+                background-color: rgba(255, 0, 220, 0.94);
+            }
 
-   #Button1:active {
-        background-color: rgba(255, 0, 220, 0.63);
-        transform: translateY(4px);
-   }
-        
-            </style>
+            #Button1:active {
+                background-color: rgba(255, 0, 220, 0.63);
+                transform: translateY(4px);
+            }
+    </style>
 
 </head>
-<body class ="body">
+<body class="body">
     <form id="form1" runat="server" align="middle">
-    <div>
-    <h1 class ="h1"> Register </h1>
+        <div>
+            <h1 class="h1">Register </h1>
 
-         &nbsp;</div>
+            &nbsp;
+        </div>
         Name<br />
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <br />

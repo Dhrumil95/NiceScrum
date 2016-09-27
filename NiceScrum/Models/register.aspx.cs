@@ -22,7 +22,7 @@ namespace NiceScrum
             db.Open();
 
 
-            string sql = String.Format(@"select max(userid) from users ");
+            string sql = String.Format(@"select max(userid) from users");
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = db;
             cmd.CommandText = sql;
@@ -30,11 +30,16 @@ namespace NiceScrum
             result = cmd.ExecuteScalar();
             string maxVal = Convert.ToString(result);
             int currnum = Convert.ToInt32(maxVal) + 1;
-            String Name = TextBox1.Text;
-            String UserName = TextBox2.Text;
-            String Password = TextBox3.Text;
+            String Name = TextBox1.Text.Replace("'","''");
+            String UserName = TextBox2.Text.Replace("'","''");
+            String Password = TextBox3.Text.Replace("'","''");
 
-            string sql2 = String.Format(@"insert into users values({0},'{1}','{2}','{3}','{4}') ",currnum, UserName, Name, Password, "reg");
+            if (UserName == "")
+                return;
+            else if (Password == "")
+                return;
+
+            string sql2 = String.Format(@"insert into users values({0},'{1}','{2}','{3}','{4}') ", currnum, UserName, Name, Password, "reg");
             SqlCommand cmd2 = new SqlCommand();
             cmd2.Connection = db;
             cmd2.CommandText = sql2;
@@ -42,13 +47,9 @@ namespace NiceScrum
             result2 = cmd2.ExecuteNonQuery();
 
             db.Close();
-
-
-
+            
             Response.Redirect("index.aspx");
-
-
-
+            
         }
     }
 }

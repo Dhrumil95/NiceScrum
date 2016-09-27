@@ -13,7 +13,7 @@ namespace NiceScrum
 
             if (!this.IsPostBack)
             {
-                string constr =  String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
+                string constr = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
 
                 using (SqlConnection con = new SqlConnection(constr))
                 {
@@ -35,7 +35,7 @@ namespace NiceScrum
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-         
+
 
             if (Convert.ToBoolean(DropDownList1.SelectedIndex != 0))
             {
@@ -66,7 +66,7 @@ namespace NiceScrum
             GridView2.DataBind();
         }
 
-        
+
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {

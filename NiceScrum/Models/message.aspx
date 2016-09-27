@@ -5,86 +5,83 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Messages</title>
-    <style type ="text/css">
-  @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+    <style type="text/css">
+        @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: white;
-}
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: white;
+        }
 
-li {
-    float: left;
-}
+        li {
+            float: left;
+        }
 
-li a {
-    display: block;
-    color: #111;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+            li a {
+                display: block;
+                color: #111;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
 
-li a:hover {
-    background-color: #808080;
-}
+                li a:hover {
+                    background-color: #808080;
+                }
 
 
- body {
+        body {
             font-family: 'Source Sans Pro', sans-serif;
             color: white;
             font-weight: 300;
             background: #2c3338;
         }
 
-  #Button1 {
-                background-color: #4CAF50;
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                transition-duration: 0.4s;
-            }
-       
-
-</style>
-
-<script type ="text/javascript">
-
-    function hidePanel(panID) {
-        var panel = document.getElementById(panID);
-        panel.style.display = 'none';
-    }
-        function showPanel(panId)
-       {
-          var panel=document.getElementById(panId)
-          panel.style.display = "";
+        #Button1 {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
         }
-</script>
+    </style>
+
+    <script type="text/javascript">
+
+        function hidePanel(panID) {
+            var panel = document.getElementById(panID);
+            panel.style.display = 'none';
+        }
+        function showPanel(panId) {
+            var panel = document.getElementById(panId)
+            panel.style.display = "";
+        }
+    </script>
 
 </head>
-<body class ="body">
+<body class="body">
     <form id="form1" runat="server">
-    <ul id="menulist1">
-       <li> <a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
-       <li><a href="#" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3')">Compose</a></li>
-        <li> <a href="#" class ="active" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3')">Inbox</a> </li>
-        <li> <a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2')">Sent</a> </li>
-    </ul> 
-       
+        <ul id="menulist1">
+            <li><a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
+            <li><a href="#" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3')">Compose</a></li>
+            <li><a href="#" class="active" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3')">Inbox</a> </li>
+            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2')">Sent</a> </li>
+        </ul>
+
         <p>
-            </p>
+        </p>
         <p>
-            </p>
-        <asp:Panel ID="Panel3" runat="server" Height="390px" style="display:none" >
+        </p>
+        <asp:Panel ID="Panel3" runat="server" Height="390px" Style="display: none">
             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataSourceID="NiceScrum" ForeColor="Black" GridLines="Vertical">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
@@ -109,7 +106,7 @@ li a:hover {
             </asp:SqlDataSource>
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server" Height="412px" Width="845px">
-            <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" AutoGenerateColumns="False" DataSourceID="NiceScrumDB" HorizontalAlign="Left" OnRowDataBound="GridView1_RowDataBound" >
+            <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical" AutoGenerateColumns="False" DataSourceID="NiceScrumDB" HorizontalAlign="Left" OnRowDataBound="GridView1_RowDataBound">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:BoundField DataField="FROM" HeaderText="FROM" SortExpression="FROM" />
@@ -132,8 +129,8 @@ li a:hover {
                 </SelectParameters>
             </asp:SqlDataSource>
         </asp:Panel>
-        <asp:Panel ID="Panel1" runat="server" Height="546px" style="display:none">
-            From:&nbsp; <%= Session["Name"].ToString() %> 
+        <asp:Panel ID="Panel1" runat="server" Height="546px" Style="display: none">
+            From:&nbsp; <%= Session["Name"].ToString() %>
             <br />
             <br />
             To:&nbsp;
@@ -151,7 +148,7 @@ li a:hover {
             <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" Width="151px" />
         </asp:Panel>
-       
+
     </form>
 </body>
 </html>
