@@ -7,6 +7,11 @@ namespace NiceScrum
 {
     public partial class message : System.Web.UI.Page
     {
+        /// <summary>
+        /// Handles the Load event of the Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             Button1.Text = "Send";
@@ -33,6 +38,11 @@ namespace NiceScrum
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the Button1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         protected void Button1_Click(object sender, EventArgs e)
         {
 
@@ -68,6 +78,11 @@ namespace NiceScrum
 
 
 
+        /// <summary>
+        /// Handles the RowDataBound event of the GridView1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="GridViewRowEventArgs"/> instance containing the event data.</param>
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -83,6 +98,11 @@ namespace NiceScrum
             }
         }
 
+        /// <summary>
+        /// Handles the RowDataBound event of the GridView2 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="GridViewRowEventArgs"/> instance containing the event data.</param>
         protected void GridView2_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)

@@ -3,13 +3,27 @@ using System.Data.SqlClient;
 
 namespace NiceScrum
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Web.UI.Page" />
     public partial class register : System.Web.UI.Page
     {
+        /// <summary>
+        /// Handles the Load event of the Page control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             Button1.Text = "Register";
         }
 
+        /// <summary>
+        /// Handles the Click event of the Button1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         protected void Button1_Click(object sender, EventArgs e)
         {
 
