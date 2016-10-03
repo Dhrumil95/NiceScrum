@@ -82,7 +82,7 @@
 </head>
 <body class="body">
     <form id="form1" runat="server">
-        <h1 class="h1">Welcome</h1>
+        <h1 class="h1">Welcome To NiceScrum</h1>
         <p class="p">
             <%     bool valid = string.IsNullOrWhiteSpace(Request.QueryString["inval"]);
                 if (!valid)
