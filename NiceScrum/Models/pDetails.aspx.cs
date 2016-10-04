@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace NiceScrum.Models
 {
@@ -10,7 +12,10 @@ namespace NiceScrum.Models
         {
             if (!Page.IsPostBack)
             {
+       
                 this.Button1.Text = "Add Task";
+                this.Button2.Text = "Assign";
+                this.Button3.Text = "Delete";
 
                 string connectioninfo;
                 SqlConnection db;
@@ -38,7 +43,8 @@ namespace NiceScrum.Models
                     conn.Close();
                 }
 
-
+                DropDownList4.Items.AddRange(DropDownList1.Items.OfType<ListItem>().ToArray());
+                
                 db.Open();
                 string sql2 = String.Format(@"select id from projects where projects.projectName = '{0}'", Session["project"].ToString());
                 SqlCommand cmd2 = new SqlCommand();
@@ -51,6 +57,46 @@ namespace NiceScrum.Models
                 db.Close();
 
                 Session.Add("pID", currnum);
+
+                using (var conn = new SqlConnection(connectioninfo))
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand(String.Format("SELECT task FROM tasks where status = 'Available' and AssignedTo IS NULL and project = {0}",currnum), conn))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                ListBox1.DataSource = reader;
+                                ListBox1.DataValueField = "task";
+                                ListBox1.DataTextField = "task";
+                                ListBox1.DataBind();
+                            }
+                        }
+                    }
+                    conn.Close();
+                }
+
+                using (var conn = new SqlConnection(connectioninfo))
+                {
+                    conn.Open();
+                    using (var cmd = new SqlCommand(String.Format("SELECT task FROM tasks where status <> 'Available' and AssignedTo IS NOT NULL and project = {0}", currnum), conn))
+                    {
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                ListBox2.DataSource = reader;
+                                ListBox2.DataValueField = "task";
+                                ListBox2.DataTextField = "task";
+                                ListBox2.DataBind();
+                            }
+                        }
+                    }
+                    conn.Close();
+                }
+
+
                 String TeamMembers = "  ";
                 using (SqlConnection conn = new SqlConnection(connectioninfo))
                 {
@@ -113,5 +159,94 @@ namespace NiceScrum.Models
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                String Task = ListBox1.SelectedItem.Text.ToString();
+                String AssignTo = DropDownList4.SelectedItem.Text.ToString();
+
+                string constr = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
+
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                   
+                    String sql = String.Format("UPDATE tasks SET AssignedTo = '{0}', Status = 'In Progress' WHERE CONVERT(VARCHAR, task) = '{1}' and CONVERT(VARCHAR, project) = '{2}' ", AssignTo,Task,Convert.ToInt32(Session["pID"].ToString()));
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                Response.Write(String.Format(@"<script language=javascript>alert('Task: {0} Assigned to {1}');</script>",Task,AssignTo ));
+               
+            }
+            catch (Exception ex)
+            {
+                DropDownList4.SelectedIndex = 0;
+                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", ex.Message));
+            }
+
+            GridView1.DataBind();
+            GridView2.DataBind();
+            ListBox1.DataBind();
+            ListBox2.DataBind();
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string myString = e.Row.Cells[2].Text;
+
+                string result = string.Empty;
+
+                for (int i = 0; i < myString.Length; i++)
+                    result += (i % 100 == 0 && i != 0) ? (myString[i].ToString() + "<br/>") : myString[i].ToString();
+
+                e.Row.Cells[2].Text = result;
+            }
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String Task = ListBox2.SelectedItem.Text.ToString();
+
+                string constr = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
+
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+
+                    String sql = String.Format("UPDATE tasks SET AssignedTo = NULL, Status = 'Available' WHERE CONVERT(VARCHAR, task) = '{0}' and CONVERT(VARCHAR, project) = '{1}' ", Task, Convert.ToInt32(Session["pID"].ToString()));
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                Response.Write(String.Format(@"<script language=javascript>alert('User removed from Task: {0}');</script>", Task));
+               
+            }
+            catch (Exception ex)
+            {
+                DropDownList4.SelectedIndex = 0;
+                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", ex.Message));
+            }
+            GridView1.DataBind();
+            GridView2.DataBind();
+            ListBox1.DataBind();
+            ListBox2.DataBind();
+        }
+
     }
 }
