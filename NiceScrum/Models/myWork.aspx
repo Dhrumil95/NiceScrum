@@ -85,33 +85,68 @@
     <form id="form1" runat="server">
         <ul id="menulist1">
             <li><a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
-            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');" >My Task</a> </li>
-            <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');">My Backlogs</a> </li>
-            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">Current Status/Due Dates</a> </li>
-            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">Task Available</a> </li>
-            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">My Profile</a> </li>
+            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');">My Task</a> </li>
+            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">Change Task Status</a> </li>
+            <li><a href="#" onclick="hidePanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">My Profile</a> </li>
             <%  if (Session["accType"].ToString().Equals("admin"))
                 {   %>
                  <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');">Projects</a> </li>
             <% } %>
         </ul>
-  
-
     <div>
     
     </div>
         <p>
-            &nbsp;</p>
+            </p>
+        <asp:Panel ID="Panel3" runat="server" Height="1072px" Width="2609px" style="display:none" >
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &#39;TODO&#39; tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;In Progress&quot; Tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;Completed&quot; Tasks<br />&nbsp;
+            &nbsp;
+            <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource3" DataTextField="task" DataValueField="task" Height="396px" Width="413px"></asp:ListBox>
+            &nbsp;&nbsp;
+            <asp:ListBox ID="ListBox3" runat="server" DataSourceID="SqlDataSource4" DataTextField="task" DataValueField="task" Height="396px" Width="428px"></asp:ListBox>
+            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [task] FROM [tasks] WHERE (([Status] LIKE '%' + @Status + '%') AND ([AssignedTo] = @AssignedTo))">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="In Progress" Name="Status" Type="String" />
+                    <asp:SessionParameter Name="AssignedTo" SessionField="name" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            &nbsp;&nbsp;
+            <asp:ListBox ID="ListBox4" runat="server" DataSourceID="SqlDataSource5" DataTextField="task" DataValueField="task" Height="396px" Width="413px"></asp:ListBox>
+            <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [task] FROM [tasks] WHERE (([Status] = @Status) AND ([AssignedTo] = @AssignedTo))">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="Completed" Name="Status" Type="String" />
+                    <asp:SessionParameter Name="AssignedTo" SessionField="name" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            &nbsp;<asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [task] FROM [tasks] WHERE (([Status] = @Status) AND ([AssignedTo] = @AssignedTo))">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="TODO" Name="Status" Type="String" />
+                    <asp:SessionParameter Name="AssignedTo" SessionField="name" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            &nbsp;&nbsp;
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button2" runat="server" Height="32px" OnClick="Button2_Click" Text="Button" Width="187px" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button3" runat="server" Height="32px" Text="Button" Width="187px" OnClick="Button3_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button4" runat="server" Height="32px" Text="Button" Width="187px" OnClick="Button4_Click" />
+            <br />
+            <br />
+        </asp:Panel>
         <p>
             </p>
-        <asp:Panel ID="Panel2" runat="server" Height="487px" Style="display:none" >
+        <asp:Panel ID="Panel2" runat="server" Height="487px"  style="display:none">
             <asp:ListBox ID="ListBox1" runat="server" Height="366px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="496px" DataSourceID="SqlDataSource2" DataTextField="projectName" DataValueField="projectName"></asp:ListBox>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [projectName] FROM [projects] WHERE ([Manager] = @Manager)">
                 <SelectParameters>
                     <asp:SessionParameter Name="Manager" SessionField="name" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
-            &nbsp;
+            <br />
+            <br />
             <asp:Button ID="Button1" runat="server" Height="36px" OnClick="Button1_Click" Text="Button" Width="157px" />
         </asp:Panel>
         <asp:Panel ID="Panel1" runat="server" Height="542px">
@@ -122,6 +157,8 @@
                         <asp:BoundField DataField="Task" HeaderText="Task" SortExpression="Task" />
                         <asp:BoundField DataField="Task Desc." HeaderText="Task Desc." SortExpression="Task Desc." />
                         <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
+                        <asp:BoundField DataField="Due Date" HeaderText="Due Date" SortExpression="Due Date" />
+                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                         <asp:BoundField DataField="Project Name" HeaderText="Project Name" SortExpression="Project Name" />
                     </Columns>
                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -133,7 +170,7 @@
                     <SortedDescendingCellStyle BackColor="#EAEAD3" />
                     <SortedDescendingHeaderStyle BackColor="#575357" />
               </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand=" SELECT tasks.Id AS ID, tasks.task as Task, tasks.taskDesc as 'Task Desc.', tasks.Type, projects.projectName AS 'Project Name' FROM tasks INNER JOIN projects ON tasks.Project = projects.Id WHERE ([AssignedTo] = @AssignedTo)">
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand=" SELECT tasks.Id AS ID, tasks.task as Task, tasks.taskDesc as 'Task Desc.', tasks.Type, tasks.DueDate as 'Due Date', tasks.Status, projects.projectName AS 'Project Name' FROM tasks INNER JOIN projects ON tasks.Project = projects.Id WHERE ([AssignedTo] = @AssignedTo)">
                     <SelectParameters>
                         <asp:SessionParameter Name="AssignedTo" SessionField="name" Type="String" />
                     </SelectParameters>
