@@ -156,7 +156,7 @@ namespace NiceScrum.Models
                 }
                 TextBox1.Text = TextBox2.Text = TextBox3.Text = "";
                 DropDownList1.SelectedIndex = DropDownList2.SelectedIndex = DropDownList3.SelectedIndex = 0;
-                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", AssignedTo));
+                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", "Task Added!"));
               
             }
             catch (Exception ex)
