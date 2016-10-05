@@ -72,6 +72,7 @@
     </Content>
     <Content Include="Models\homepage.aspx" />
     <Content Include="Models\message.aspx" />
+    <Content Include="Models\myWork.aspx" />
     <Content Include="Models\Sandbox.aspx" />
     <Content Include="Models\testhomepage.aspx" />
     <Content Include="Models\pDetails.aspx" />
@@ -106,6 +107,13 @@
     </Compile>
     <Compile Include="Models\message.aspx.designer.cs">
       <DependentUpon>message.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\myWork.aspx.cs">
+      <DependentUpon>myWork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\myWork.aspx.designer.cs">
+      <DependentUpon>myWork.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Sandbox.aspx.cs">
       <DependentUpon>Sandbox.aspx</DependentUpon>

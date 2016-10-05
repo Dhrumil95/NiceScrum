@@ -83,6 +83,7 @@
     <title></title>
 </head>
 <body class ="body">
+    <
     <form id="form1" runat="server">
           <ul id="menulist1">
             <li><a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
@@ -119,9 +120,9 @@
                         <Columns>
                             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                             <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
-                            <asp:BoundField DataField="task" HeaderText="task" SortExpression="task" />
-                            <asp:BoundField DataField="taskDesc" HeaderText="taskDesc" SortExpression="taskDesc" />
-                            <asp:BoundField DataField="DueDate" HeaderText="DueDate" SortExpression="DueDate" />
+                            <asp:BoundField DataField="task" HeaderText="Task" SortExpression="task" />
+                            <asp:BoundField DataField="taskDesc" HeaderText="Task Desc" SortExpression="taskDesc" />
+                            <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate" />
                             <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                             <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                         </Columns>
@@ -195,10 +196,10 @@
                          <AlternatingRowStyle BackColor="White" />
                          <Columns>
                              <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
-                             <asp:BoundField DataField="task" HeaderText="task" SortExpression="task" />
-                             <asp:BoundField DataField="taskDesc" HeaderText="taskDesc" SortExpression="taskDesc" />
-                             <asp:BoundField DataField="DueDate" HeaderText="DueDate" SortExpression="DueDate" />
-                             <asp:BoundField DataField="AssignedTo" HeaderText="AssignedTo" SortExpression="AssignedTo" />
+                             <asp:BoundField DataField="task" HeaderText="Task" SortExpression="task" />
+                             <asp:BoundField DataField="taskDesc" HeaderText="Task Desc" SortExpression="taskDesc" />
+                             <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate" />
+                             <asp:BoundField DataField="AssignedTo" HeaderText="Assigned To" SortExpression="AssignedTo" />
                              <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
                              <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                          </Columns>

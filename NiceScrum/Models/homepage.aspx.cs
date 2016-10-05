@@ -47,7 +47,7 @@ namespace Nicescrum_homepage
 
         protected void lnkbtnmywork_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("myWork.aspx");
         }
     }
 }

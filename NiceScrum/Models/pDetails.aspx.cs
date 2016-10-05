@@ -211,6 +211,8 @@ namespace NiceScrum.Models
             GridView2.DataBind();
             ListBox1.DataBind();
             ListBox2.DataBind();
+
+            Response.Redirect("pDetails.aspx");
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -230,10 +232,10 @@ namespace NiceScrum.Models
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+            String Task = ListBox2.SelectedItem.Text.ToString();
+
             try
             {
-                String Task = ListBox2.SelectedItem.Text.ToString();
-
                 string constr = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
 
                 using (SqlConnection con = new SqlConnection(constr))
@@ -248,19 +250,20 @@ namespace NiceScrum.Models
                         cmd.ExecuteNonQuery();
                         con.Close();
                     }
-                }
-                Response.Write(String.Format(@"<script language=javascript>alert('User removed from Task: {0}');</script>", Task));
-               
+                }               
             }
             catch (Exception ex)
             {
                 DropDownList4.SelectedIndex = 0;
                 Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", ex.Message));
             }
+            Response.Write(String.Format(@"<script language=javascript>alert('User removed from Task: {0}');</script>", Task));
             GridView1.DataBind();
             GridView2.DataBind();
             ListBox1.DataBind();
             ListBox2.DataBind();
+            Response.Redirect("pDetails.aspx");
+
         }
 
     }
