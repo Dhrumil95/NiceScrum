@@ -5,23 +5,49 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NiceScrum
+namespace Nicescrum_homepage
 {
-    public partial class homepage : System.Web.UI.Page
+    public partial class Homepage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
-        String selectedProject = "";
-        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            selectedProject = ListBox1.SelectedItem.Text;
+
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Home_Click(object sender, EventArgs e)
         {
-            Session.Add("project", selectedProject);
-            Response.Redirect("pDetails.aspx");
+
+        }
+
+        protected void lnkbtnmessages_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("message.aspx");
+        }
+
+        protected void lnkbtnsandbox_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Sandbox.aspx");
+        }
+
+        protected void lkbtnmeeting_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkbtnresources_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        protected void lnkbtnhome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkbtnmywork_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

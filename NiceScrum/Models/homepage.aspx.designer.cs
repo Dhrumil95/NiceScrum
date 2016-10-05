@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NiceScrum {
-    
-    
-    public partial class homepage {
-        
+namespace Nicescrum_homepage
+{
+
+
+    public partial class Homepage
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,32 +22,59 @@ namespace NiceScrum {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
-        /// ListBox1 control.
+        /// lnkbtnhome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
-        
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnhome;
+
         /// <summary>
-        /// NiceScrumDB control.
+        /// lnkbtnmywork control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource NiceScrumDB;
-        
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnmywork;
+
         /// <summary>
-        /// Button1 control.
+        /// lnkbtnmessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnmessages;
+
+        /// <summary>
+        /// lnkbtnsandbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnsandbox;
+
+        /// <summary>
+        /// lkbtnmeeting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkbtnmeeting;
+
+        /// <summary>
+        /// lnkbtnresources control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnresources;
     }
 }

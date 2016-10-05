@@ -70,8 +70,10 @@
     <Content Include="App_Data\NiceScrumDB_log.ldf">
       <DependentUpon>NiceScrumDB.mdf</DependentUpon>
     </Content>
-    <Content Include="Models\message.aspx" />
     <Content Include="Models\homepage.aspx" />
+    <Content Include="Models\message.aspx" />
+    <Content Include="Models\Sandbox.aspx" />
+    <Content Include="Models\testhomepage.aspx" />
     <Content Include="Models\pDetails.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -91,6 +93,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\homepage.aspx.cs">
+      <DependentUpon>homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\homepage.aspx.designer.cs">
+      <DependentUpon>homepage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\message.aspx.cs">
       <DependentUpon>message.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,12 +107,19 @@
     <Compile Include="Models\message.aspx.designer.cs">
       <DependentUpon>message.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\homepage.aspx.cs">
-      <DependentUpon>homepage.aspx</DependentUpon>
+    <Compile Include="Models\Sandbox.aspx.cs">
+      <DependentUpon>Sandbox.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Models\homepage.aspx.designer.cs">
-      <DependentUpon>homepage.aspx</DependentUpon>
+    <Compile Include="Models\Sandbox.aspx.designer.cs">
+      <DependentUpon>Sandbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\testhomepage.aspx.cs">
+      <DependentUpon>testhomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\testhomepage.aspx.designer.cs">
+      <DependentUpon>testhomepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\pDetails.aspx.cs">
       <DependentUpon>pDetails.aspx</DependentUpon>
