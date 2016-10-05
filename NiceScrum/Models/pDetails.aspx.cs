@@ -10,7 +10,7 @@ namespace NiceScrum.Models
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!Page.IsPostBack) 
             {
        
                 this.Button1.Text = "Add Task";
@@ -40,6 +40,7 @@ namespace NiceScrum.Models
                             }
                         }
                     }
+                    DropDownList1.Items.Insert(0, new ListItem("None", "0"));
                     conn.Close();
                 }
 
@@ -135,7 +136,15 @@ namespace NiceScrum.Models
 
                 using (SqlConnection con = new SqlConnection(constr))
                 {
-                    String sql = String.Format("INSERT INTO tasks values({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", TaskID, TaskName, TaskDesc, DueDate, AssignedTo, TaskType, Status, Convert.ToInt32(Session["pID"].ToString()));
+                    String sql = "";
+                    if (AssignedTo == "None")
+                    {
+                        sql = String.Format("INSERT INTO tasks values({0}, '{1}', '{2}', '{3}', {4}, '{5}', 'Available', '{6}')", TaskID, TaskName, TaskDesc, DueDate, null, TaskType, Convert.ToInt32(Session["pID"].ToString()));
+                    }
+                    else 
+                    {
+                        sql = String.Format("INSERT INTO tasks values({0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", TaskID, TaskName, TaskDesc, DueDate, AssignedTo, TaskType, Status, Convert.ToInt32(Session["pID"].ToString()));
+                    }
                     using (SqlCommand cmd = new SqlCommand(sql))
                     {
                         cmd.CommandType = CommandType.Text;
