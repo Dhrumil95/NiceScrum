@@ -137,9 +137,9 @@ namespace NiceScrum.Models
                 using (SqlConnection con = new SqlConnection(constr))
                 {
                     String sql = "";
-                    if (AssignedTo == "None")
+                    if (DropDownList1.SelectedIndex == 0)
                     {
-                        sql = String.Format("INSERT INTO tasks values({0}, '{1}', '{2}', '{3}', {4}, '{5}', 'Available', '{6}')", TaskID, TaskName, TaskDesc, DueDate, null, TaskType, Convert.ToInt32(Session["pID"].ToString()));
+                        sql = String.Format("INSERT INTO tasks (Id, task, taskDesc, DueDate, Type, Status, Project) values({0}, '{1}', '{2}', '{3}', '{4}', 'Available', '{5}')", TaskID, TaskName, TaskDesc, DueDate, TaskType, Convert.ToInt32(Session["pID"].ToString()));
                     }
                     else 
                     {
@@ -156,13 +156,19 @@ namespace NiceScrum.Models
                 }
                 TextBox1.Text = TextBox2.Text = TextBox3.Text = "";
                 DropDownList1.SelectedIndex = DropDownList2.SelectedIndex = DropDownList3.SelectedIndex = 0;
-                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", "Task Added!"));
-                GridView1.DataBind();
+                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", AssignedTo));
+              
             }
             catch (Exception ex)
             { TextBox1.Text = TextBox2.Text = TextBox3.Text = "";
                 DropDownList1.SelectedIndex = DropDownList2.SelectedIndex = DropDownList3.SelectedIndex = 0;
-                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", ex.Message));  }        
+                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", ex.Message));  }
+            GridView1.DataBind();
+            GridView2.DataBind();
+            ListBox1.DataBind();
+            ListBox2.DataBind();
+
+            Response.Redirect("pDetails.aspx");
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
