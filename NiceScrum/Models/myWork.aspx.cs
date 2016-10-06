@@ -13,7 +13,7 @@ namespace NiceScrum.Models
             Button2.Text = "Change To 'In Progress'";
             Button3.Text = "Change To 'Complete'";
             Button4.Text = "Change To 'TODO'";
-
+            Button5.Text = "Create Project";
 
         }
 
@@ -107,6 +107,47 @@ namespace NiceScrum.Models
                     cmd.ExecuteNonQuery();
                     con.Close();
                 }
+            }
+
+            GridView1.DataBind();
+            ListBox1.DataBind();
+            ListBox2.DataBind();
+            ListBox3.DataBind();
+            ListBox4.DataBind();
+
+            Response.Redirect("myWork.aspx");
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int ProjectID = Convert.ToInt32(TextBox1.Text);
+                String ProjectName = TextBox2.Text.Replace("'", "''");
+
+                string constr = String.Format(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True");
+
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    String sql = String.Format("INSERT INTO projects values({0}, '{1}', '{2}')", ProjectID, ProjectName, Session["name"].ToString());
+                    
+                    using (SqlCommand cmd = new SqlCommand(sql))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                TextBox1.Text = TextBox2.Text = "";
+                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", "Project Added!"));
+
+            }
+            catch (Exception ex)
+            {
+                TextBox1.Text = TextBox2.Text = "";
+                Response.Write(String.Format(@"<script language=javascript>alert('{0}');</script>", ex.Message));
             }
 
             GridView1.DataBind();

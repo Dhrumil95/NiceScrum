@@ -85,12 +85,13 @@
     <form id="form1" runat="server">
         <ul id="menulist1">
             <li><a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
-            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');">My Task</a> </li>
-            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">Change Task Status</a> </li>
-            <li><a href="#" onclick="hidePanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">My Profile</a> </li>
+            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');hidePanel('Panel4');">My Task</a> </li>
+            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');">Change Task Status</a> </li>
+            <li><a href="#" onclick="hidePanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');">My Profile</a> </li>
             <%  if (Session["accType"].ToString().Equals("admin"))
                 {   %>
-                 <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');">Projects</a> </li>
+                 <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');hidePanel('Panel4');">Projects</a> </li>
+                 <li><a href="#" onclick="showPanel('Panel4'); hidePanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');">Create Project</a> </li>
             <% } %>
         </ul>
     <div>
@@ -98,6 +99,19 @@
     </div>
         <p>
             </p>
+        <asp:Panel ID="Panel4" runat="server" Height="324px" style="display:none">
+            <br />
+            <br />
+            Project ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Project Name:&nbsp;&nbsp;
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="Button5" runat="server" Height="61px" OnClick="Button5_Click" Text="Button" Width="174px" />
+        </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" Height="1072px" Width="2609px" style="display:none" >
             <br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &#39;TODO&#39; tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;In Progress&quot; Tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;Completed&quot; Tasks<br />&nbsp;
