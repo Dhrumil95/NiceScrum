@@ -21,33 +21,22 @@ namespace Nicescrum_homepage
 
         protected void lnkbtnmessages_Click(object sender, EventArgs e)
         {
-            Response.Redirect("message.aspx");
+            
         }
 
         protected void lnkbtnsandbox_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Sandbox.aspx");
-        }
-
-        protected void lkbtnmeeting_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
         protected void lnkbtnresources_Click(object sender, EventArgs e)
         {
-
+            
         }
-
-
-        protected void lnkbtnhome_Click(object sender, EventArgs e)
+        
+       protected void lnkbtnmywork_Click(object sender, EventArgs e)
         {
-
-        }
-
-        protected void lnkbtnmywork_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("myWork.aspx");
+            
         }
     }
 }

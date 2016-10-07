@@ -71,8 +71,10 @@
       <DependentUpon>NiceScrumDB.mdf</DependentUpon>
     </Content>
     <Content Include="Models\homepage.aspx" />
+    <Content Include="Models\image.gif" />
     <Content Include="Models\message.aspx" />
     <Content Include="Models\myWork.aspx" />
+    <Content Include="Models\Resources.aspx" />
     <Content Include="Models\Sandbox.aspx" />
     <Content Include="Models\testhomepage.aspx" />
     <Content Include="Models\pDetails.aspx" />
@@ -114,6 +116,13 @@
     </Compile>
     <Compile Include="Models\myWork.aspx.designer.cs">
       <DependentUpon>myWork.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resources.aspx.cs">
+      <DependentUpon>Resources.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\Resources.aspx.designer.cs">
+      <DependentUpon>Resources.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Sandbox.aspx.cs">
       <DependentUpon>Sandbox.aspx</DependentUpon>

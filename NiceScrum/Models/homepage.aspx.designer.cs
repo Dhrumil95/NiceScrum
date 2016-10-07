@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nicescrum_homepage
-{
-
-
-    public partial class Homepage
-    {
-
+namespace Nicescrum_homepage {
+    
+    
+    public partial class Homepage {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,16 +20,7 @@ namespace Nicescrum_homepage
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// lnkbtnhome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkbtnhome;
-
+        
         /// <summary>
         /// lnkbtnmywork control.
         /// </summary>
@@ -40,7 +29,7 @@ namespace Nicescrum_homepage
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtnmywork;
-
+        
         /// <summary>
         /// lnkbtnmessages control.
         /// </summary>
@@ -49,7 +38,7 @@ namespace Nicescrum_homepage
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtnmessages;
-
+        
         /// <summary>
         /// lnkbtnsandbox control.
         /// </summary>
@@ -58,16 +47,7 @@ namespace Nicescrum_homepage
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtnsandbox;
-
-        /// <summary>
-        /// lkbtnmeeting control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lkbtnmeeting;
-
+        
         /// <summary>
         /// lnkbtnresources control.
         /// </summary>

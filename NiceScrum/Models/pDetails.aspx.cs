@@ -114,9 +114,13 @@ namespace NiceScrum.Models
                         conn.Close();
                     }
                 }
-                //Response.Write(String.Format(@"<script>alert('{0}')</script>",TeamMembers));
-                TeamMembers = TeamMembers.Remove(TeamMembers.Length - 3);
-                Session.Add("tMembers", TeamMembers);
+                try
+                {
+                    //Response.Write(String.Format(@"<script>alert('{0}')</script>",TeamMembers));
+                    TeamMembers = TeamMembers.Remove(TeamMembers.Length - 3);
+                    Session.Add("tMembers", TeamMembers);
+                }
+                catch { }
             }
         }
 
