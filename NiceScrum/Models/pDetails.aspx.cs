@@ -15,7 +15,7 @@ namespace NiceScrum.Models
        
                 this.Button1.Text = "Add Task";
                 this.Button2.Text = "Assign";
-                this.Button3.Text = "Delete";
+                this.Button3.Text = "Change to 'Available'";
 
                 string connectioninfo;
                 SqlConnection db;
@@ -27,7 +27,8 @@ namespace NiceScrum.Models
                 using (var conn = new SqlConnection(connectioninfo))
                 {
                     conn.Open();
-                    using (var cmd = new SqlCommand("SELECT name FROM users", conn))
+                    string sql = String.Format(@"select DISTINCT t.MemberName as name from projects P, TeamMembers t where p.id = t.ProjectID and p.projectName = '{0}' and t.ProjectName = '{0}' ", Session["project"].ToString());
+                    using (var cmd = new SqlCommand(sql, conn))
                     {
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -101,7 +102,7 @@ namespace NiceScrum.Models
                 String TeamMembers = "  ";
                 using (SqlConnection conn = new SqlConnection(connectioninfo))
                 {
-                    string sql = String.Format(@"select DISTINCT t.AssignedTo as name from projects P, tasks t where p.id = t.Project and p.projectName = '{0}' and t.AssignedTo IS NOT NULL ", Session["project"].ToString());
+                    string sql = String.Format(@"select DISTINCT t.MemberName as name from projects P, TeamMembers t where p.id = t.ProjectID and p.projectName = '{0}' and t.ProjectName = '{0}' ", Session["project"].ToString());
                     SqlCommand oCmd = new SqlCommand(sql, conn);
                     conn.Open();
                     using (SqlDataReader result = oCmd.ExecuteReader())
@@ -109,7 +110,7 @@ namespace NiceScrum.Models
                         while (result.Read())
                         {
                             TeamMembers += result["name"].ToString();
-                            TeamMembers += ",  ";
+                            TeamMembers += "  ,  ";
                         }
                         conn.Close();
                     }
@@ -121,6 +122,55 @@ namespace NiceScrum.Models
                     Session.Add("tMembers", TeamMembers);
                 }
                 catch { }
+
+
+                //startDate
+                String StartDate = "  ";
+                using (SqlConnection conn = new SqlConnection(connectioninfo))
+                {
+                    string sql = String.Format(@"select StartDate from projects P where p.projectName = '{0}' ", Session["project"].ToString());
+                    SqlCommand oCmd = new SqlCommand(sql, conn);
+                    conn.Open();
+                    using (SqlDataReader result = oCmd.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            StartDate += result["StartDate"].ToString();
+                        }
+                        conn.Close();
+                    }
+                }
+                try
+                {
+                    //Response.Write(String.Format(@"<script>alert('{0}')</script>",TeamMembers));
+                    Session.Add("StartDate", StartDate);
+                }
+                catch { }
+
+                //endDate
+                //startDate
+                String EndDate = "  ";
+                using (SqlConnection conn = new SqlConnection(connectioninfo))
+                {
+                    string sql = String.Format(@"select EndDate from projects P where p.projectName = '{0}' ", Session["project"].ToString());
+                    SqlCommand oCmd = new SqlCommand(sql, conn);
+                    conn.Open();
+                    using (SqlDataReader result = oCmd.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            EndDate += result["EndDate"].ToString();
+                        }
+                        conn.Close();
+                    }
+                }
+                try
+                {
+                    //Response.Write(String.Format(@"<script>alert('{0}')</script>",TeamMembers));
+                    Session.Add("EndDate", EndDate);
+                }
+                catch { }
+
             }
         }
 

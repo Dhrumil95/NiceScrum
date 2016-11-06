@@ -10,10 +10,11 @@
 
         ul {
             list-style-type: none;
-            margin: 0;
+            display: table;
+            margin: 0 auto;
             padding: 0;
             overflow: hidden;
-            background-color: white;
+            background-color: lightblue;
         }
 
         li {
@@ -29,7 +30,7 @@
             }
 
                 li a:hover {
-                    background-color: #808080;
+                    background-color: white;
                 }
 
 
@@ -53,6 +54,11 @@
             cursor: pointer;
             transition-duration: 0.4s;
         }
+        h1 {
+            color: antiquewhite;
+            text-align: center;
+            font-size: x-large;
+        }
     </style>
 
     <script type="text/javascript">
@@ -70,11 +76,17 @@
 </head>
 <body class="body">
     <form id="form1" runat="server">
+        <h1 class ="h1" ><strong style="font-family: 'OCR A Extended'"> Messages</strong> </h1>
+        </br>
         <ul id="menulist1">
-            <li><a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
+            <li><a href="#" onclick="window.location='homepage.aspx'">Home</a> </li>
             <li><a href="#" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3')">Compose</a></li>
             <li><a href="#" class="active" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3')">Inbox</a> </li>
             <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2')">Sent</a> </li>
+            <li><a href="#" onclick="window.location='myWork.aspx'">MyWork</a> </li>
+            <li><a href="#" onclick="window.location='Sandbox.aspx'">Sandbox</a> </li>
+            <li><a href="#" onclick="window.location='Resources.aspx'">Resources</a> </li>
+            <li><a href="#" onclick="window.location='index.aspx'">Logout</a> </li>
         </ul>
 
         <p>

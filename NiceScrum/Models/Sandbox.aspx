@@ -10,10 +10,11 @@
 
         ul {
             list-style-type: none;
-            margin: 0;
+            display: table;
+            margin: 0 auto;
             padding: 0;
             overflow: hidden;
-            background-color: white;
+            background-color: lightblue;
         }
 
         li {
@@ -29,7 +30,7 @@
             }
 
                 li a:hover {
-                    background-color: #808080;
+                    background-color: white;
                 }
 
 
@@ -57,7 +58,7 @@
          h1 {
             color: antiquewhite;
             text-align: center;
-            font-size: 40px;
+            font-size: x-large;
         }
 
     </style>
@@ -82,12 +83,16 @@
         <asp:LinkButton ID="lnkbtnhome1" runat="server" OnClick="LinkButton1_Click">NICESRUM</asp:LinkButton> -->
 
         <br />
-        <h1 class ="h1" > SandBox </h1>
+        <h1 class ="h1" ><strong style="font-family: 'OCR A Extended'"> Sandbox</strong> </h1>
         <br />
         <ul id="menulist1">
             <li><a href="#" onclick="window.location='homepage.aspx'">Home</a> </li>
             <li><a href="#" onclick="showPanel('Panel1'); hidePanel('Panel2');">Ideas</a></li>
             <li><a href="#" class="active" onclick="showPanel('Panel2'); hidePanel('Panel1');">Posts</a> </li>
+            <li><a href="#" onclick="window.location='myWork.aspx'">MyWork</a> </li>
+            <li><a href="#" onclick="window.location='message.aspx'">Messages</a></li>
+            <li><a href="#" onclick="window.location='Resources.aspx'">Resources</a> </li>
+            <li><a href="#" onclick="window.location='index.aspx'">Logout</a> </li>
         </ul>
             
         <p>

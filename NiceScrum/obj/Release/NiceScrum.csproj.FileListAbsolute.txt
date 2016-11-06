@@ -18,3 +18,43 @@ C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.CodeDom.Providers.Dot
 C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\obj\Release\NiceScrum.csprojResolveAssemblyReference.cache
 C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\obj\Release\NiceScrum.dll
 C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\obj\Release\NiceScrum.pdb
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\csc.exe
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\vbc.exe
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\VBCSCompiler.exe
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\NiceScrum.dll.config
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\NiceScrum.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\NiceScrum.pdb
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\obj\Release\NiceScrum.csprojResolveAssemblyReference.cache
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\obj\Release\NiceScrum.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master (1)\NiceScrum-master\NiceScrum\obj\Release\NiceScrum.pdb
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\csc.exe
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\vbc.exe
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\VBCSCompiler.exe
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\NiceScrum.dll.config
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\NiceScrum.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\NiceScrum.pdb
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\obj\Release\NiceScrum.csprojResolveAssemblyReference.cache
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\obj\Release\NiceScrum.dll
+C:\Users\Ramkiran Chevendra\Downloads\NiceScrum-master_Revised\NiceScrum-master\NiceScrum\obj\Release\NiceScrum.pdb

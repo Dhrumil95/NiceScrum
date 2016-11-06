@@ -10,7 +10,7 @@
          h1 {
             color: antiquewhite;
             text-align: center;
-            font-size: 40px;
+            font-size: x-large;
         }
 
         ul {
@@ -18,7 +18,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: white;
+            background-color: lightblue;
         }
 
         li {
@@ -34,7 +34,7 @@
             }
 
                 li a:hover {
-                    background-color: #808080;
+                    background-color: white;
                 }
 
 
@@ -83,22 +83,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h1 class ="h1" ><strong style="font-family: 'OCR A Extended'"> My Work</strong> </h1>
         <ul id="menulist1">
-            <li><a href="#" onclick="window.location='homepage.aspx'">Back</a> </li>
-            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');hidePanel('Panel4');">My Task</a> </li>
-            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');">Change Task Status</a> </li>
-           <!-- <li><a href="#" onclick="showPanel('Panel5'); hidePanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');">My Profile</a> </li> -->
+            <li><a href="#" onclick="window.location='homepage.aspx'">Home</a> </li>
+            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');hidePanel('Panel4');hidePanel('Panel5');">My Task</a> </li>
+            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');hidePanel('Panel5');">Change Task Status</a> </li>
+            <li><a href="#" onclick="showPanel('Panel5'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');hidePanel('Panel3');">Meeting</a> </li>
+            <!-- <li><a href="#" onclick="showPanel('Panel5'); hidePanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');">My Profile</a> </li> -->
             <%  if (Session["accType"].ToString().Equals("admin"))
                 {   %>
-                 <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');hidePanel('Panel4');">Projects</a> </li>
-                 <li><a href="#" onclick="showPanel('Panel4'); hidePanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');">Create Project</a> </li>
+                 <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');hidePanel('Panel4');hidePanel('Panel5');">Projects</a> </li>
+                 <li><a href="#" onclick="showPanel('Panel4'); hidePanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');hidePanel('Panel5');">Create Project</a> </li>
             <% } %>
+            <li><a href="#" onclick="window.location='message.aspx'">Messages</a></li>
+            <li><a href="#" onclick="window.location='Sandbox.aspx'">Sandbox</a> </li>
+            <li><a href="#" onclick="window.location='Resources.aspx'">Resources</a> </li>
+            <li><a href="#" onclick="window.location='index.aspx'">Logout</a> </li>
         </ul>
     <div>
-    
+       
     </div>
         <p>
             </p>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:Panel ID="Panel4" runat="server" Height="324px" style="display:none">
             <br />
             <br />
@@ -110,11 +117,29 @@
             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
             <br />
             <br />
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+              Start Date<asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
+                <br />
+                 <br />
+              End Date<asp:Calendar ID="Calendar3" runat="server"></asp:Calendar>
+            </ContentTemplate>
+
+            </asp:UpdatePanel>
+            <br />
+            <br />
+            <div style="OVERFLOW-Y:scroll; WIDTH:500px; HEIGHT:300px">
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource6" DataTextField="name" DataValueField="name">
+            </asp:CheckBoxList>
+            <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT DISTINCT [name] FROM [users]"></asp:SqlDataSource>
+           </div>
+            <br />
+            <br />
             <asp:Button ID="Button5" runat="server" Height="61px" OnClick="Button5_Click" Text="Button" Width="174px" />
         </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" Height="1072px" Width="2609px" style="display:none" >
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &#39;TODO&#39; tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;In Progress&quot; Tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;Completed&quot; Tasks<br />&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &#39;TODO&#39; tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;In Progress&quot; Tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of &quot;Completed&quot; Tasks<br />&nbsp;
             &nbsp;
             <asp:ListBox ID="ListBox2" runat="server" DataSourceID="SqlDataSource3" DataTextField="task" DataValueField="task" Height="396px" Width="413px"></asp:ListBox>
             &nbsp;&nbsp;
@@ -152,6 +177,34 @@
         </asp:Panel>
         <p>
             </p>
+        <asp:Panel ID="Panel5" runat="server" Height="801px" style="display:none">
+            <br />
+            Meeting Agenda<br />
+            <asp:TextBox ID="TextBox3" runat="server" Height="180px" TextMode="MultiLine" Width="416px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+              Date<asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+            </ContentTemplate>
+
+            </asp:UpdatePanel>
+            <br />
+            <br />
+            Time:
+            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+      
+            <br />
+            <br />
+            <div style="OVERFLOW-Y:scroll; WIDTH:500px; HEIGHT:300px">
+            <asp:CheckBoxList ID="CheckBoxList2" runat="server" DataSourceID="SqlDataSource6" DataTextField="name" DataValueField="name">
+            </asp:CheckBoxList>
+            </div>
+            <br />
+            <br />
+            <br />
+            <asp:Button ID="Button6" runat="server" Height="46px" Text="Button" Width="231px" OnClick="Button6_Click" />
+        </asp:Panel>
         <asp:Panel ID="Panel2" runat="server" Height="487px"  style="display:none">
             <asp:ListBox ID="ListBox1" runat="server" Height="366px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="496px" DataSourceID="SqlDataSource2" DataTextField="projectName" DataValueField="projectName"></asp:ListBox>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [projectName] FROM [projects] WHERE ([Manager] = @Manager)">
@@ -164,6 +217,25 @@
             <asp:Button ID="Button1" runat="server" Height="36px" OnClick="Button1_Click" Text="Button" Width="157px" />
         </asp:Panel>
         <asp:Panel ID="Panel1" runat="server" Height="542px">
+          
+             <br />
+            <br />
+            
+         <% if (Session["pAdded"] != null)
+                   { %>
+    <% if (Session["pAdded"].ToString() == "1")
+                   { %>
+       
+        <h3>  Project Added! </h3>
+        
+         <% }
+                   else if (Session["pAdded"].ToString() == "0")
+                   { %>
+          <h3>  An error occured! </h3>
+        <%} %>
+        <% } %>
+            <br />
+            <br />
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" Height="355px" Width="942px">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>

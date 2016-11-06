@@ -71,7 +71,6 @@
       <DependentUpon>NiceScrumDB.mdf</DependentUpon>
     </Content>
     <Content Include="Models\homepage.aspx" />
-    <Content Include="Models\image.gif" />
     <Content Include="Models\message.aspx" />
     <Content Include="Models\myWork.aspx" />
     <Content Include="Models\Resources.aspx" />
