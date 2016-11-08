@@ -119,18 +119,26 @@
                     <br />
                     <br />
                     <br />
-             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="False">
-                <ContentTemplate>
-                    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Id" DataSourceID="NiceScrumDB" ForeColor="Black" GridLines="Vertical" Height="307px" Width="923px">
+             
+                    <asp:GridView ID="GridView2" runat="server" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Id" DataSourceID="NiceScrumDB" ForeColor="Black" GridLines="Vertical" Height="307px" Width="1395px">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                            <asp:TemplateField ShowHeader="False">
+                                <EditItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Update"></asp:LinkButton>
+                                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit"></asp:LinkButton>
+                                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" OnClientClick="return confirm('Are you sure you want to delete?');" CommandName="Delete" Text="Delete"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
-                            <asp:BoundField DataField="task" HeaderText="Task" SortExpression="task" />
-                            <asp:BoundField DataField="taskDesc" HeaderText="Task Desc" SortExpression="taskDesc" />
-                            <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate" />
-                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                            <asp:BoundField DataField="task" HeaderText="task" SortExpression="task" />
+                            <asp:BoundField DataField="taskDesc" HeaderText="taskDesc" SortExpression="taskDesc" />
+                            <asp:BoundField DataField="DueDate" HeaderText="DueDate" SortExpression="DueDate" />
                             <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
+                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                         </Columns>
                         <FooterStyle BackColor="#CCCC99" />
                         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -142,14 +150,10 @@
                         <SortedDescendingCellStyle BackColor="#EAEAD3" />
                         <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
-                </ContentTemplate>
-                  <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="GridView2" />
-        </Triggers>
-            </asp:UpdatePanel>
+               
         </asp:Panel>
        
-        <asp:Panel ID="Panel4" runat="server" Height="388px">
+        <asp:Panel ID="Panel4" runat="server" Height="388px" style ="display:none">
             <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource2" Height="377px" OnLoad="Chart1_Load" Width="572px">
                 <series>
                     <asp:Series Name="Series1" YValueMembers="Column1">
@@ -219,48 +223,90 @@
         </asp:Panel>
         <asp:Panel ID="Panel1" runat="server" Height="458px">
             <br />
-            <h3 class ="h1"><p> Start Date:   <%= Session["StartDate"] %> </p> </h3>
-            <h3 class ="h1"><p> End Date:   <%= Session["EndDate"] %> </p> </h3>
-             <h3 class ="h1"><p> Team Members:   <%= Session["tmembers"] %> </p> Tasks: </h3>
-                 <p>
-                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" Height="274px" Width="942px" OnRowDataBound="GridView1_RowDataBound" >
-                         <AlternatingRowStyle BackColor="White" />
-                         <Columns>
-                             <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
-                             <asp:BoundField DataField="task" HeaderText="Task" SortExpression="task" />
-                             <asp:BoundField DataField="taskDesc" HeaderText="Task Desc" SortExpression="taskDesc" />
-                             <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate" />
-                             <asp:BoundField DataField="AssignedTo" HeaderText="Assigned To" SortExpression="AssignedTo" />
-                             <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
-                             <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
-                         </Columns>
-                         <FooterStyle BackColor="#CCCC99" />
-                         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                         <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                         <RowStyle BackColor="#F7F7DE" />
-                         <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                         <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                         <SortedAscendingHeaderStyle BackColor="#848384" />
-                         <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                         <SortedDescendingHeaderStyle BackColor="#575357" />
-                     </asp:GridView>
-                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [Id], [task], [taskDesc], [DueDate], [AssignedTo], [Type], [Status] FROM [tasks] WHERE ([Project] = @Project)">
-                         <SelectParameters>
-                             <asp:SessionParameter Name="Project" SessionField="pID" Type="String" />
-                         </SelectParameters>
-                     </asp:SqlDataSource>
-                     <asp:SqlDataSource ID="NiceScrumDB" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [Id], [task], [taskDesc], [DueDate], [AssignedTo], [Type], [Status] FROM [tasks] WHERE ([Project] = @Project)" OldValuesParameterFormatString="original_{0}">
-                         <SelectParameters>
-                             <asp:SessionParameter Name="Project" SessionField="pID" Type="String" />
-                         </SelectParameters>
-                     </asp:SqlDataSource>
-                 </p>
-                 <h3></h3>
-                 <h3></h3>
-                 <h3></h3>
-                 <h3></h3>
-                 <h3></h3>
-             </h3>
+            <h3 class ="h1"><p> Start Date:   <%= Session["StartDate"] %> </p> 
+                <h3></h3>
+                <h3 class="h1">
+                    <p>
+                        End Date: <%= Session["EndDate"] %>
+                    </p>
+                    <h3></h3>
+                    <h3 class="h1">
+                        <p>
+                            Team Members: <%= Session["tmembers"] %>
+                        </p>
+                        Tasks:
+                        <h3></h3>
+                        <p>
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" Height="274px" OnRowDataBound="GridView1_RowDataBound" Width="942px">
+                                <AlternatingRowStyle BackColor="White" />
+                                <Columns>
+                                    <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
+                                    <asp:BoundField DataField="task" HeaderText="Task" SortExpression="task" />
+                                    <asp:BoundField DataField="taskDesc" HeaderText="Task Desc" SortExpression="taskDesc" />
+                                    <asp:BoundField DataField="DueDate" HeaderText="Due Date" SortExpression="DueDate" />
+                                    <asp:BoundField DataField="AssignedTo" HeaderText="Assigned To" SortExpression="AssignedTo" />
+                                    <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
+                                    <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                                </Columns>
+                                <FooterStyle BackColor="#CCCC99" />
+                                <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                                <RowStyle BackColor="#F7F7DE" />
+                                <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                                <SortedAscendingHeaderStyle BackColor="#848384" />
+                                <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                                <SortedDescendingHeaderStyle BackColor="#575357" />
+                            </asp:GridView>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [Id], [task], [taskDesc], [DueDate], [AssignedTo], [Type], [Status] FROM [tasks] WHERE ([Project] = @Project)">
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="Project" SessionField="pID" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                            <asp:SqlDataSource ID="NiceScrumDB" runat="server" ConflictDetection="CompareAllValues" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" DeleteCommand="DELETE FROM [tasks] WHERE [Id] = @original_Id AND (([task] = @original_task) OR ([task] IS NULL AND @original_task IS NULL)) AND (([taskDesc] = @original_taskDesc) OR ([taskDesc] IS NULL AND @original_taskDesc IS NULL)) AND (([DueDate] = @original_DueDate) OR ([DueDate] IS NULL AND @original_DueDate IS NULL)) AND (([Type] = @original_Type) OR ([Type] IS NULL AND @original_Type IS NULL)) AND (([Status] = @original_Status) OR ([Status] IS NULL AND @original_Status IS NULL))" InsertCommand="INSERT INTO [tasks] ([Id], [task], [taskDesc], [DueDate], [Type], [Status]) VALUES (@Id, @task, @taskDesc, @DueDate, @Type, @Status)" OldValuesParameterFormatString="original_{0}" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [Id], [task], [taskDesc], [DueDate], [Type], [Status] FROM [tasks] WHERE ([Project] = @Project)" UpdateCommand="UPDATE [tasks] SET [task] = @task, [taskDesc] = @taskDesc, [DueDate] = @DueDate, [Type] = @Type, [Status] = @Status WHERE [Id] = @original_Id AND (([task] = @original_task) OR ([task] IS NULL AND @original_task IS NULL)) AND (([taskDesc] = @original_taskDesc) OR ([taskDesc] IS NULL AND @original_taskDesc IS NULL)) AND (([DueDate] = @original_DueDate) OR ([DueDate] IS NULL AND @original_DueDate IS NULL)) AND (([Type] = @original_Type) OR ([Type] IS NULL AND @original_Type IS NULL)) AND (([Status] = @original_Status) OR ([Status] IS NULL AND @original_Status IS NULL))">
+                                <DeleteParameters>
+                                    <asp:Parameter Name="original_Id" Type="Int32" />
+                                    <asp:Parameter Name="original_task" Type="String" />
+                                    <asp:Parameter Name="original_taskDesc" Type="String" />
+                                    <asp:Parameter DbType="Date" Name="original_DueDate" />
+                                    <asp:Parameter Name="original_Type" Type="String" />
+                                    <asp:Parameter Name="original_Status" Type="String" />
+                                </DeleteParameters>
+                                <InsertParameters>
+                                    <asp:Parameter Name="Id" Type="Int32" />
+                                    <asp:Parameter Name="task" Type="String" />
+                                    <asp:Parameter Name="taskDesc" Type="String" />
+                                    <asp:Parameter DbType="Date" Name="DueDate" />
+                                    <asp:Parameter Name="Type" Type="String" />
+                                    <asp:Parameter Name="Status" Type="String" />
+                                </InsertParameters>
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="Project" SessionField="pID" Type="String" />
+                                </SelectParameters>
+                                <UpdateParameters>
+                                    <asp:Parameter Name="task" Type="String" />
+                                    <asp:Parameter Name="taskDesc" Type="String" />
+                                    <asp:Parameter DbType="Date" Name="DueDate" />
+                                    <asp:Parameter Name="Type" Type="String" />
+                                    <asp:Parameter Name="Status" Type="String" />
+                                    <asp:Parameter Name="original_Id" Type="Int32" />
+                                    <asp:Parameter Name="original_task" Type="String" />
+                                    <asp:Parameter Name="original_taskDesc" Type="String" />
+                                    <asp:Parameter DbType="Date" Name="original_DueDate" />
+                                    <asp:Parameter Name="original_Type" Type="String" />
+                                    <asp:Parameter Name="original_Status" Type="String" />
+                                </UpdateParameters>
+                            </asp:SqlDataSource>
+                        </p>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
+                        <h3></h3>
+                    </h3>
+                </h3>
+            </h3>
         </asp:Panel>
     </div>
     </form>

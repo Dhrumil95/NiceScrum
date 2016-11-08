@@ -135,7 +135,7 @@
            </div>
             <br />
             <br />
-            <asp:Button ID="Button5" runat="server" Height="61px" OnClick="Button5_Click" Text="Button" Width="174px" />
+            <asp:Button ID="Button5" runat="server" Height="61px" OnClientClick="alert('Project Added!');" OnClick="Button5_Click" Text="Button" Width="174px" />
         </asp:Panel>
         <asp:Panel ID="Panel3" runat="server" Height="1072px" Width="2609px" style="display:none" >
             <br />
@@ -202,8 +202,7 @@
             </div>
             <br />
             <br />
-            <br />
-            <asp:Button ID="Button6" runat="server" Height="46px" Text="Button" Width="231px" OnClick="Button6_Click" />
+            <asp:Button ID="Button6" runat="server" Height="46px" Text="Button" Width="231px" OnClientClick="alert('Meeting Message Sent');" OnClick="Button6_Click" />
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server" Height="487px"  style="display:none">
             <asp:ListBox ID="ListBox1" runat="server" Height="366px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="496px" DataSourceID="SqlDataSource2" DataTextField="projectName" DataValueField="projectName"></asp:ListBox>
@@ -217,24 +216,6 @@
             <asp:Button ID="Button1" runat="server" Height="36px" OnClick="Button1_Click" Text="Button" Width="157px" />
         </asp:Panel>
         <asp:Panel ID="Panel1" runat="server" Height="542px">
-          
-             <br />
-            <br />
-            
-         <% if (Session["pAdded"] != null)
-                   { %>
-    <% if (Session["pAdded"].ToString() == "1")
-                   { %>
-       
-        <h3>  Project Added! </h3>
-        
-         <% }
-                   else if (Session["pAdded"].ToString() == "0")
-                   { %>
-          <h3>  An error occured! </h3>
-        <%} %>
-        <% } %>
-            <br />
             <br />
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource1" ForeColor="Black" GridLines="Vertical" Height="355px" Width="942px">
                     <AlternatingRowStyle BackColor="White" />

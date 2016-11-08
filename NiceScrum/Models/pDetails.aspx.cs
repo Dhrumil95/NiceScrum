@@ -10,6 +10,7 @@ namespace NiceScrum.Models
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //ScriptManager1.RegisterAsyncPostBackControl(GridView2);
             if (!Page.IsPostBack) 
             {
        
@@ -172,6 +173,10 @@ namespace NiceScrum.Models
                 catch { }
 
             }
+            GridView1.DataBind();
+            GridView2.DataBind();
+            ListBox1.DataBind();
+            ListBox2.DataBind();
         }
 
         protected void Button1_Click(object sender, EventArgs e)

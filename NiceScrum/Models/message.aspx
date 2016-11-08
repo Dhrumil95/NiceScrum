@@ -158,7 +158,7 @@
             <asp:TextBox ID="TextBox2" runat="server" Height="239px" Width="643px" TextMode="MultiLine"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" Width="151px" />
+            <asp:Button ID="Button1" runat="server" OnClientClick="alert('Message Sent');" OnClick="Button1_Click" Text="Button" Width="151px" />
         </asp:Panel>
 
     </form>
