@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pDetails.aspx.cs" Inherits="NiceScrum.Models.pDetails" %>
 
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -83,13 +85,13 @@
     <title></title>
 </head>
 <body class ="body">
-    <
     <form id="form1" runat="server">
           <ul id="menulist1">
             <li><a href="#" onclick="window.location='homepage.aspx'">Home</a> </li>
-            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');" >Details</a> </li>
-            <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');">Create Task</a> </li>
-            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">Update Tasks</a> </li>
+            <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel4'); hidePanel('Panel2'); hidePanel('Panel3');" >Details</a> </li>
+            <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel4'); hidePanel('Panel1'); hidePanel('Panel3');">Create Task</a> </li>
+            <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel4'); hidePanel('Panel1'); hidePanel('Panel2');">Update Tasks</a> </li>
+            <li><a href="#" onclick="showPanel('Panel4'); hidePanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');">Project Chart</a> </li>
             <li><a href="#" onclick="window.location='myWork.aspx'">MyWork</a> </li>
             <li><a href="#" onclick="window.location='message.aspx'">Messages</a></li>
             <li><a href="#" onclick="window.location='Sandbox.aspx'">Sandbox</a> </li>
@@ -117,7 +119,7 @@
                     <br />
                     <br />
                     <br />
-             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="False">
                 <ContentTemplate>
                     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" DataKeyNames="Id" DataSourceID="NiceScrumDB" ForeColor="Black" GridLines="Vertical" Height="307px" Width="923px">
                         <AlternatingRowStyle BackColor="White" />
@@ -141,7 +143,30 @@
                         <SortedDescendingHeaderStyle BackColor="#575357" />
                     </asp:GridView>
                 </ContentTemplate>
+                  <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="GridView2" />
+        </Triggers>
             </asp:UpdatePanel>
+        </asp:Panel>
+       
+        <asp:Panel ID="Panel4" runat="server" Height="388px">
+            <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource2" Height="377px" OnLoad="Chart1_Load" Width="572px">
+                <series>
+                    <asp:Series Name="Series1" YValueMembers="Column1">
+                    </asp:Series>
+                </series>
+                <chartareas>
+                    <asp:ChartArea Name="ChartArea1">
+                    </asp:ChartArea>
+                </chartareas>
+            </asp:Chart>
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\NiceScrumDB.mdf;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT count(*) FROM tasks WHERE ([Project] = @Project) GROUP BY status">
+
+                 <SelectParameters>
+                             <asp:SessionParameter Name="Project" SessionField="pID" Type="String" />
+                         </SelectParameters>
+
+            </asp:SqlDataSource>
         </asp:Panel>
        
         <p>

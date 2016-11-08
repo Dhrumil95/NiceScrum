@@ -320,5 +320,10 @@ namespace NiceScrum.Models
 
         }
 
+        protected void Chart1_Load(object sender, EventArgs e)
+        {
+            Chart1.ChartAreas[0].AxisX.CustomLabels.Add(0.5, 1.5, "Available");
+            Chart1.ChartAreas[0].AxisX.CustomLabels.Add(1.5, 2.5, "In Progress");
+        }
     }
 }

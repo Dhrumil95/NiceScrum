@@ -88,10 +88,10 @@
             <li><a href="#" onclick="window.location='homepage.aspx'">Home</a> </li>
             <li><a href="#" class="active" onclick="showPanel('Panel1'); hidePanel('Panel2'); hidePanel('Panel3');hidePanel('Panel4');hidePanel('Panel5');">My Task</a> </li>
             <li><a href="#" onclick="showPanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');hidePanel('Panel5');">Change Task Status</a> </li>
-            <li><a href="#" onclick="showPanel('Panel5'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');hidePanel('Panel3');">Meeting</a> </li>
             <!-- <li><a href="#" onclick="showPanel('Panel5'); hidePanel('Panel3'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');">My Profile</a> </li> -->
             <%  if (Session["accType"].ToString().Equals("admin"))
                 {   %>
+                 <li><a href="#" onclick="showPanel('Panel5'); hidePanel('Panel1'); hidePanel('Panel2');hidePanel('Panel4');hidePanel('Panel3');">Meeting</a> </li>
                  <li><a href="#" onclick="showPanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');hidePanel('Panel4');hidePanel('Panel5');">Projects</a> </li>
                  <li><a href="#" onclick="showPanel('Panel4'); hidePanel('Panel2'); hidePanel('Panel1'); hidePanel('Panel3');hidePanel('Panel5');">Create Project</a> </li>
             <% } %>

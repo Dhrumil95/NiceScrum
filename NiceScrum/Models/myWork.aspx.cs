@@ -160,7 +160,7 @@ namespace NiceScrum.Models
                 foreach (ListItem item in CheckBoxList1.Items)
                     if (item.Selected) selected.Add(item);
 
-                if (selected.Count == 0) return;
+                //if (selected.Count == 0) return;
 
 
                 // checkbox
@@ -216,7 +216,7 @@ namespace NiceScrum.Models
                 foreach (ListItem item in CheckBoxList2.Items)
                     if (item.Selected) selected.Add(item);
 
-                if (selected.Count == 0) return;
+                //if (selected.Count == 0) return;
 
                 String Agenda = TextBox3.Text;
                 String Time = TextBox4.Text;
