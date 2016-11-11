@@ -1,7 +1,7 @@
 ﻿<<!DOCTYPE html>
 <html>
 <head>
-    <title>SignalR Simple Chat</title>
+    <title>Chat Box</title>
     <style type="text/css">
         .container {
             background-color: #99CCFF;
@@ -10,12 +10,21 @@
             margin: 20px;
         }
     </style>
+
+    <style type="text/css">
+    body {
+        background-color: #2c3338;
+    }
+</style>
+
 </head>
-<body>
+<body class ="body">
+    <h1 style="color:chartreuse"> ChatBox </h1>
     <div class="container">
         <input type="text" id="message" />
         <input type="button" id="sendmessage" value="Send" />
         <input type="hidden" id="displayname" />
+        <input type="button" onclick="window.location='Models/myWork.aspx'" id="Back" value="Back" />
         <ul id="discussion"></ul>
     </div>
     <!--Script references. -->
