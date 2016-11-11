@@ -18,3 +18,16 @@ C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.CodeDom.Providers.Dot
 C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\obj\Debug\NiceScrum.csprojResolveAssemblyReference.cache
 C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\obj\Debug\NiceScrum.dll
 C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\obj\Debug\NiceScrum.pdb
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.Owin.dll
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.Owin.Security.dll
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Newtonsoft.Json.dll
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Owin.dll
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.Owin.xml
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Microsoft.Owin.Security.xml
+C:\Users\Dhrumil\Desktop\NiceScrum\NiceScrum\bin\Newtonsoft.Json.xml
